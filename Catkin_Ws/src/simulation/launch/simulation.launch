@@ -1,0 +1,7 @@
+<launch>
+
+<node name="gazebo" type="gzserver" pkg="gazebo_ros" output="screen" 
+              args="--verbose -e ode $(find simulation)/models/map/Aalto_ELEC.sdf" /> 
+<node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" output="screen"/> 
+
+</launch>

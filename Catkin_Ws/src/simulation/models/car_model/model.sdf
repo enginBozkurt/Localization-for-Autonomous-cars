@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+ <model name="EKF">   
+<include>
+     <uri>model://car</uri>
+     <name>hyundai</name>
+     <pose>0 0 0 0 0 0</pose>
+</include>
+  
+<!-- GPS-->
+
+<include>
+      <uri>model://gps</uri>
+      <name>gps</name>
+      <pose>0 0 1 0 0 0</pose>
+</include>
+
+<joint name="gps_joint" type="fixed">
+        <parent>hyundai::base_link</parent>
+        <child>gps::gps_link</child>
+</joint>
+
+<!-- IMU-->
+
+<include>
+     <uri>model://imu</uri>
+     <name>imu</name>
+     <pose>0 0 0.4 0 0 0</pose>
+ </include>
+
+<joint name="imu_joint" type="fixed">
+        <parent>hyundai::base_link</parent>
+        <child>imu::imu_link</child>
+</joint>
+
+
+</model>
+</sdf>

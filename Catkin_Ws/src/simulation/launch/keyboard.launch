@@ -1,0 +1,5 @@
+<launch>
+
+<node name="keyboard_input" pkg="simulation" type="keyboard_input"/>
+
+</launch>

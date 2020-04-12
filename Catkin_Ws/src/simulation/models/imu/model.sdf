@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="imu">
+    <link name="imu_link">
+     <inertial>
+       <mass>0.1</mass>
+       <inertia>
+         <ixx>0.000166666</ixx>
+         <ixy>0</ixy>
+         <ixz>0</ixz>
+         <iyy>0.000166666</iyy>
+         <iyz>0</iyz>
+         <izz>0.000166666</izz>
+       </inertia>
+     </inertial>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+       <plugin name="imu" filename="libimu.so">
+      <alwaysOn>true</alwaysOn>
+      <frameName>imu_frame</frameName>
+      <bodyName>imu_link</bodyName>      
+      <topicName>imu_data</topicName>
+      <serviceName>imu_service</serviceName>
+      <ditectAngleFromImu>true</ditectAngleFromImu>
+      <gaussianNoise>0.0</gaussianNoise>
+      <updateRate>100.0</updateRate>
+      </plugin>
+  </model>
+</sdf>

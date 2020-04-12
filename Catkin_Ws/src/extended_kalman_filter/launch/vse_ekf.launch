@@ -1,0 +1,25 @@
+<launch>
+
+<!--param name="use_sim_time" value="true" /-->
+
+<rosparam command="load" file="$(find extended_kalman_filter)/cfg/ekf/ivs_vse_param_ekf.yaml"/>
+
+
+<node 
+	pkg="extended_kalman_filter"
+	type="vse_ekf_sim"
+	name="vse_ekf_sim"
+        output = "screen"
+/>
+
+<node 
+	pkg="extended_kalman_filter"
+	type="vse_tf_frame_publisher_ekf_sim"
+	name="vse_tf_frame_publisher_ekf_sim"
+        output = "screen"
+	args ="$(find extended_kalman_filter)/cfg/ekf/odom_pose.yaml" 
+/>
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="imu_link" args="0 0 0 0 0 0 1 base_link imu_frame" />
+
+</launch>
